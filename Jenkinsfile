@@ -6,12 +6,21 @@ pipeline {
 	// 	}
 	// }
 
+	environment {
+		dockerHome = tools 'myDocker'
+		mavenHome = tools 'myMaven'
+		path = "$dockerHome/bin:$mavenHome/bin:$PATH"
+	}
+
 	stages {
 		stage('Build') {
 			steps {
 				// sh "node --version"
 				echo "Build"
 				echo "BranchName - $env.BRANCH_NAME"
+				echo "path - $PATH"
+				sh "docker version"
+				sh "mvn --version"
 			}
 		}
 		stage('Test') {
