@@ -40,8 +40,8 @@ pipeline {
 		}
 		stage('Build docker image') {
 			steps {
-				"docker build currency-exchange:1.0"
-				"docker run -d -p 8000:8000 currency-exchange:1.0"
+				sh "docker build currency-exchange:1.0"
+				sh "docker run -d -p 8000:8000 currency-exchange:1.0"
 			}
 		}
 		// stage('sendmail') {
