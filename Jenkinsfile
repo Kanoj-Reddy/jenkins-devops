@@ -11,7 +11,7 @@ pipeline {
 			steps {
 				// sh "node --version"
 				echo "Build"
-				echo "BranchName - $BRANCH_NAME"
+				echo "BranchName - $env.BRANCH_NAME"
 			}
 		}
 		stage('Test') {
