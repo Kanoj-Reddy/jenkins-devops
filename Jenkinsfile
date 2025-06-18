@@ -23,14 +23,25 @@ pipeline {
 				sh "mvn --version"
 			}
 		}
-		stage('Test') {
+		stage('Compile') {
 			steps {
-				echo "Test"
+				echo "mvn clean compile"
 			}
 		}
-		stage('anotherTest') {
+		stage('Test') {
 			steps {
-				echo "anotherTest"
+				sh "mvn test"
+			}
+		}
+		stage('Integration test') {
+			steps {
+				echo "mvn failsafe:integration-test failsafe:verify"
+			}
+		}
+		stage('Build docker image') {
+			steps {
+				"docker build currency-exchange:1.0"
+				"docker run -d -p 8000:8000 urrency-exchange:1.0"
 			}
 		}
 		// stage('sendmail') {
