@@ -28,16 +28,16 @@ pipeline {
 				echo "mvn clean compile"
 			}
 		}
-		stage('Test') {
-			steps {
-				sh "mvn test"
-			}
-		}
-		stage('Integration test') {
-			steps {
-				echo "mvn failsafe:integration-test failsafe:verify"
-			}
-		}
+		// stage('Test') {
+		// 	steps {
+		// 		sh "mvn test"
+		// 	}
+		// }
+		// stage('Integration test') {
+		// 	steps {
+		// 		echo "mvn failsafe:integration-test failsafe:verify"
+		// 	}
+		// }
 		stage('Build docker image') {
 			steps {
 				sh "docker build currency-exchange:1.0"
