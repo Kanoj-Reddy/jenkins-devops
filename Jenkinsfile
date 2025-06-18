@@ -1,15 +1,17 @@
 pipeline {
-	agent {
-		docker {
-			image "node:24-alpine3.21"
-		}
-	}
+	agent any
+	// agent {
+	// 	docker {
+	// 		image "node:24-alpine3.21"
+	// 	}
+	// }
 
 	stages {
 		stage('Build') {
 			steps {
-				sh "node --version"
+				// sh "node --version"
 				echo "Build"
+				echo "BranchName - $BRANCH_NAME"
 			}
 		}
 		stage('Test') {
@@ -22,11 +24,11 @@ pipeline {
 				echo "anotherTest"
 			}
 		}
-		stage('sendmail') {
-			steps {	
-				mail bcc: '', body: 'deployed successfully', cc: '', from: '', replyTo: '', subject: 'deployed', to: 'kanoj2108@gmail.com'
-			}
-		}
+		// stage('sendmail') {
+		// 	steps {	
+		// 		mail bcc: '', body: 'deployed successfully', cc: '', from: '', replyTo: '', subject: 'deployed', to: 'kanoj2108@gmail.com'
+		// 	}
+		// }
 	}
 	
 	post {
