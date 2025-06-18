@@ -22,6 +22,11 @@ pipeline {
 				echo "anotherTest"
 			}
 		}
+		stage('sendmail') {
+			steps {	
+				mail bcc: '', body: 'deployed successfully', cc: '', from: '', replyTo: '', subject: 'deployed', to: 'kanoj2108@gmail.com'
+			}
+		}
 	}
 	
 	post {
